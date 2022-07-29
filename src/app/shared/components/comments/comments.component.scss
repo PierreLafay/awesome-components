@@ -1,0 +1,4 @@
+mat-list-item {
+  border-bottom: thin solid #555;
+}
+mat-list mat-list-item:last-child { border-bottom: 0;}
