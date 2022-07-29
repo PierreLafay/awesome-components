@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { Comment } from '../../../core/models/comment.model'
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-comments',
@@ -10,9 +11,15 @@ export class CommentsComponent implements OnInit {
 
   @Input() comments!: Comment[];
 
-  constructor() { }
+  commentControl!: FormControl;
+
+  constructor( private formBuilder: FormBuilder ) { }
 
   ngOnInit(): void {
+    this.commentControl = this.formBuilder.control('', [Validators.required, Validators.minLength(10)]);
   }
 
+  onLeaveComment() {
+
+  }
 }
