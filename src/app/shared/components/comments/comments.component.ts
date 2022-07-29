@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Comment } from '../../../core/models/comment.model'
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
 
@@ -10,6 +10,7 @@ import {FormBuilder, FormControl, Validators} from "@angular/forms";
 export class CommentsComponent implements OnInit {
 
   @Input() comments!: Comment[];
+  @Output() newComment = new EventEmitter<string>();
 
   commentControl!: FormControl;
 
@@ -20,6 +21,10 @@ export class CommentsComponent implements OnInit {
   }
 
   onLeaveComment() {
-
+    if (this.commentControl.invalid) {
+      return;
+    }
+    this.newComment.emit(this.commentControl.value);
+    this.commentControl.reset();
   }
 }
