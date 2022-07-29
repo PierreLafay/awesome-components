@@ -8,6 +8,7 @@ export class ShortenPipe implements PipeTransform {
     if (value.length <= 50) {
       return value;
     }
-    return value.substring(0, 50) + '…';
+    const cutPos = value.lastIndexOf(' ',50)
+    return (cutPos > 0 ? value.substring(0, cutPos) : value.substring(0, 50) ) + ' …';
   }
 }
