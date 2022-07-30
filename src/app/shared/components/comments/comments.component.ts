@@ -25,6 +25,19 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
       transition('active => default', [
         animate('500ms ease-in-out')
       ]),
+      transition('void => *', [
+        style({
+          transform: 'translateX(-100%)',
+          opacity: 0,
+          'background-color': 'rgb(201, 157, 242)',
+        }),
+        animate('500ms ease-out', style({
+          transform: 'translateX(0)',
+          opacity: 1,
+          'background-color': 'white',
+        }))
+      ])
+
     ])
   ]
 })
@@ -35,7 +48,6 @@ export class CommentsComponent implements OnInit {
 
   commentControl!: FormControl;
   animationStates: { [key: number]: 'default' | 'active' } = {};
-  listItemAnimationState: 'default' | 'active' = 'default';
 
   constructor( private formBuilder: FormBuilder ) { }
 
@@ -50,6 +62,14 @@ export class CommentsComponent implements OnInit {
     if (this.commentControl.invalid) {
       return;
     }
+    // Récupération de l'id maximum
+    const maxId = Math.max(...this.comments.map(comment => comment.id));
+    this.comments.unshift({
+      id: maxId + 1,
+      comment: this.commentControl.value,
+      createdDate: new Date(),
+      userId: 1
+    });
     this.newComment.emit(this.commentControl.value);
     this.commentControl.reset();
   }

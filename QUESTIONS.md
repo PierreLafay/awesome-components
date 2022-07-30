@@ -40,3 +40,17 @@ Tout fonctionne bien, mais est-ce la bonne manière ?
 >[object Object]
 >``` 
 > Ce qui me parait très logique
+## Chapitre 9 
+- Erreur de compil sur :
+```
+...
+  createdDate: new Date().toISOString(),
+...
+```
+  >createdDate attend une date, mais je ne sais pas ou/quand est typé createdDate.
+  > Pb corrigé en enlevant la conversion en chaîne ISO :
+  > ```
+  > ...
+  >   createdDate: new Date(),
+  > ...
+  > ```
