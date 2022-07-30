@@ -6,13 +6,14 @@ import {
   animateChild,
   group,
   query,
-  sequence,
   stagger,
   state,
   style,
   transition,
-  trigger
+  trigger, useAnimation
 } from "@angular/animations";
+import {flashAnimation} from "../../animations/flash.animation";
+import {slideAndFadeAnimation} from "../../animations/slide-and-face.animation";
 
 @Component({
   selector: 'app-comments',
@@ -51,25 +52,10 @@ import {
             opacity: 0
           }),
         ]),
-        style({
-          transform: 'translateX(-100%)',
-          opacity: 0,
-          'background-color': 'rgb(201, 157, 242)',
-        }),
-        animate('250ms ease-out', style({
-          transform: 'translateX(0)',
-          opacity: 1,
-          'background-color': 'white',
-        })),
+        useAnimation(slideAndFadeAnimation),
         group([
-          sequence([
-            animate('250ms', style({
-              'background-color': 'rgb(255,7,147)'
-            })),
-            animate('250ms', style({
-              'background-color': 'white'
-            })),
-          ]),          query('.comment-text', [
+          useAnimation(flashAnimation),
+          query('.comment-text', [
             animate('500ms', style({
               opacity: 1
             }))

@@ -54,3 +54,5 @@ Tout fonctionne bien, mais est-ce la bonne manière ?
   >   createdDate: new Date(),
   > ...
   > ```
+## Chapitre 10
+- Comment peut-on utiliser l'animation flashAnimation de sharedModule, sans l'avoir ni déclarée, exportée ?
