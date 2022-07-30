@@ -35,7 +35,7 @@
 ...
 ```
 Tout fonctionne bien, mais est-ce la bonne manière ?
-> Je pense que oui, car je ne peut utiliser l'objet userIdentity dnas le template sans y mettre de pipe, sinon j'ai comme affichage :
+> Je pense que oui, car je ne peux utiliser l'objet userIdentity dans le template sans y mettre de pipe, sinon j'ai comme affichage :
 >```
 >[object Object]
 >``` 
