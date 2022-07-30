@@ -1,13 +1,33 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { Comment } from '../../../core/models/comment.model'
 import {FormBuilder, FormControl, Validators} from "@angular/forms";
-import {animate, group, query, sequence, state, style, transition, trigger} from "@angular/animations";
+import {
+  animate,
+  animateChild,
+  group,
+  query,
+  sequence,
+  stagger,
+  state,
+  style,
+  transition,
+  trigger
+} from "@angular/animations";
 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.scss'],
   animations: [
+    trigger('list', [
+      transition(':enter', [
+        query('@listItem', [
+          stagger(50, [
+            animateChild()
+          ])
+        ])
+      ])
+    ]),
     trigger('listItem', [
       state('default', style({
         transform: 'scale(1)',
