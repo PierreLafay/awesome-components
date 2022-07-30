@@ -13,7 +13,7 @@ import {
   trigger, useAnimation
 } from "@angular/animations";
 import {flashAnimation} from "../../animations/flash.animation";
-import {slideAndFadeAnimation} from "../../animations/slide-and-face.animation";
+import {slideAndFadeAnimation} from "../../animations/slide-and-fade.animation";
 
 @Component({
   selector: 'app-comments',
@@ -52,9 +52,18 @@ import {slideAndFadeAnimation} from "../../animations/slide-and-face.animation";
             opacity: 0
           }),
         ]),
-        useAnimation(slideAndFadeAnimation),
-        group([
-          useAnimation(flashAnimation),
+        useAnimation(slideAndFadeAnimation, {
+          params: {
+            time: '500ms',
+            startColor: 'rgb(201, 157, 242)'
+          }
+        }),        group([
+          useAnimation(flashAnimation,{
+            params: {
+              time: '250ms',
+              flashColor: 'orange'
+            }
+          }),
           query('.comment-text', [
             animate('500ms', style({
               opacity: 1

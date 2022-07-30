@@ -4,11 +4,11 @@ export const slideAndFadeAnimation = animation([
   style({
     transform: 'translateX(-100%)',
     opacity: 0,
-    'background-color': 'rgb(201, 157, 242)',
+    'background-color': '{{startColor}}'
   }),
-  animate('250ms ease-out', style({
+  animate('{{time}} ease-out', style({
     transform: 'translateX(0)',
     opacity: 1,
-    'background-color': 'white',
+    'background-color': 'white'
   }))
 ]);

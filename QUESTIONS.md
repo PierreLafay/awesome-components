@@ -55,4 +55,6 @@ Tout fonctionne bien, mais est-ce la bonne manière ?
   > ...
   > ```
 ## Chapitre 10
-- Comment peut-on utiliser l'animation flashAnimation de sharedModule, sans l'avoir ni déclarée, exportée ?
+- Pourquoi ne déclare-t-on et n'exportons pas les animations dans sharedModule ?
+
+
