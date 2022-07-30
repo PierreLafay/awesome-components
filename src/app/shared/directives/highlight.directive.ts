@@ -6,6 +6,7 @@ import {AfterViewInit, Directive, ElementRef, HostListener, Input, Renderer2} fr
 export class HighlightDirective implements AfterViewInit {
 
   @Input() color = 'yellow';
+  @Input() overColor = 'lightgreen';
 
   constructor(private el: ElementRef,
               private renderer: Renderer2) {}
@@ -19,7 +20,7 @@ export class HighlightDirective implements AfterViewInit {
   }
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.setBackgroundColor('lightgreen');
+    this.setBackgroundColor(this.overColor);
   }
 
   @HostListener('mouseleave') onMouseLeave() {
@@ -27,6 +28,6 @@ export class HighlightDirective implements AfterViewInit {
   }
 
   @HostListener('click') onClick() {
-    this.color = 'lightgreen';
+    this.color = this.overColor;
   }
 }
