@@ -57,4 +57,10 @@ Tout fonctionne bien, mais est-ce la bonne manière ?
 ## Chapitre 10
 - Pourquoi ne déclare-t-on et n'exportons pas les animations dans sharedModule ?
 
-
+## Chapitre 14
+- Pourrait-on n'utiliser qu'un observable pour la préférence de contact et lui faire retourner mail ou phone ?
+- Quel est l'expression régulière qui permet de tester un n° de téléphone ?
+> J'ai fait quelques essais en utilisant des regexp trouvées sur le web et fonctionnelles, mais cela ne marche pas, j'ai une erreur sur la regexp
+- Je voudrais stocker des patterns préparés dans un fichier pour les utiliser ensuite, comment faire cela proprement ?
+> On pourrait les stocker dans coreModule ou sharedModule ? (je pense), mais je préfèrerai un fichier indépendant pour la réutilisabilité. 
+- Comment afficher un message d'erreur lorsque l'enregistrement du formulaire provoque une erreur ?
