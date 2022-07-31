@@ -91,3 +91,6 @@ De cette manière le message d'erreur pour le groupe (non égalité) ne s'affich
 > ```
 > Ou appleMail est mon validateur d'email apple.
 > Cela ne fonctionne pas
+
+## Chapitre 17 - State detection - Préparation module
+- SI je comprends bien, il n'y a que des avantages à passer les modules en onPush. Pourquoi dans ce cas, n'est-ce pas le mode par défaut ?
