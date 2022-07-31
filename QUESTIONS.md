@@ -64,3 +64,30 @@ Tout fonctionne bien, mais est-ce la bonne manière ?
 - Je voudrais stocker des patterns préparés dans un fichier pour les utiliser ensuite, comment faire cela proprement ?
 > On pourrait les stocker dans coreModule ou sharedModule ? (je pense), mais je préfèrerai un fichier indépendant pour la réutilisabilité. 
 - Comment afficher un message d'erreur lorsque l'enregistrement du formulaire provoque une erreur ?
+> On pourrait créer un validator sur le formulaire entier ?
+
+## Chapitre 15
+- Bug (petit), dans le validator simple, quand on poste le form, au réaffichage du formulaire, les champs email ne sont plus visibles.
+> Je pense que cela est du que l'on réinitialse le formulaire en appliquant ce contrôle. J'ai résolu de cette manière :
+> ```
+> ...
+>  if ( ! ctrl.value || ctrl.value.includes('me.com') || ctrl.value.includes('apple.com') || ctrl.value.includes('icloud.com')) {
+> ...
+> ```
+- J'ai modifié le validator sur les champs mails, pour n'accepter que les email d'Apple (m.com, apple.com, icloud.com). Le validator marche bien.
+J'ai créé le validator confirmEqual qui marche bien également, mais si je sais une addresse apple correcte (p.lafay@me.com) dans le premier champ et une adresse incorrecte dans le second champ (p.lafay@gmail.com), j'obtiens :
+  - Un message pour le 2ème champ (confirmEmailCtrl)
+  - Un message pour le groupe (emailForm)
+
+- Ma question : est-il possible de tester dans l'observable pour le groupe si les champs contiennent des valeurs valides ?
+De cette manière le message d'erreur pour le groupe (non égalité) ne s'afficherait que lorsque l'on a deux valeurs validées.
+> J'ai essayé de rajouter au map pour l'observable showEmailError$ :
+> ```
+> ...
+> 
+> && ! this.emailCtrl.hasError('appleMail')
+> && ! this.confirmEmailCtrl.hasError('appleMail')
+> ...
+> ```
+> Ou appleMail est mon validateur d'email apple.
+> Cela ne fonctionne pas
